@@ -89,7 +89,6 @@ See: `screenshots/11-14_execution_and_proof.png`
 - Chatbot: "Here are your options. Go book yourself."
 - Agent: "Here are your options. I'll book it." [Sends email + calendar]
 
-**Interview takeaway:**
 "As an AI PM, I distinguish between recommendation engines and true agents. Agents need:
 - Execution capabilities (connectors to email, calendar, APIs)
 - Approval gates (safety checkpoints)
@@ -105,7 +104,6 @@ Claude automatically checked:
 
 Any destination violating constraints ranked lower.
 
-**Interview takeaway:**
 "Constraints aren't restrictions—they're the product. They encode what matters to users. Budget matters. Distance matters. Family-friendliness matters. These shape the ranking algorithm and prevent bad recommendations."
 
 ### 3. Measure Real Outcomes, Not Text Output
@@ -113,7 +111,6 @@ Any destination violating constraints ranked lower.
 **What I observed:**
 The email arrived. The calendar event appeared.
 
-**Interview takeaway:**
 "Success metrics aren't 'did it output text?' They're 'did it complete the task?' In production: Did the email actually deliver? Did the calendar event actually create? Did the booking actually go through? That's how you measure agent success."
 
 ### 4. Strategic Autonomy Requires Approval Gates
@@ -123,7 +120,6 @@ Claude autonomously searched, planned, ranked. But it **stopped** before executi
 
 **Why?** Because choosing a destination requires human judgment.
 
-**Interview takeaway:**
 "True autonomy isn't 'no human input.' It's strategic autonomy with intelligent checkpoints. Automate decisions the AI makes well (search, rank, evaluate). Ask humans for decisions requiring judgment (which option?). This builds trust."
 
 ### 5. Prompt Efficiency Matters
@@ -131,7 +127,6 @@ Claude autonomously searched, planned, ranked. But it **stopped** before executi
 **What I observed:**
 I initially thought I needed 2 messages (system prompt + user request). Claude executed after the first message alone. The second was redundant.
 
-**Interview takeaway:**
 "A well-structured prompt with clear intent triggers autonomous execution without follow-up. Avoid redundant messages—they waste tokens and confuse the model. Efficiency is a feature."
 
 ---
@@ -170,25 +165,23 @@ Version 2.0 would add:
 
 ---
 
-## 🎤 Interview Talking Points
-
-### "Tell me about a time you built an AI product"
+## 🎤 My talking story
 
 > "I built an autonomous trip recommender agent. What made it an agent: it didn't just recommend options—it autonomously executed on approval (sending emails and booking calendars). The hard part was distinguishing when to be autonomous (search, rank, evaluate) vs. when to ask humans (which destination?). This required clear constraints, intelligent approval gates, and measuring real outcomes like 'did the email actually deliver?' I learned that agent design is as much about safety and trust as it is about autonomy."
 
-### "How do you measure agent success?"
+### "How I measured agent success?"
 
 > "Not 'did it output text?' but 'did it complete the task?' In this case: did the email actually arrive? Did the calendar event actually appear? I also measure constraint adherence: stayed within budget? Respected school holidays? Drove less than 5 hours? That's how you prevent bad recommendations at scale."
 
-### "What's the difference between an agent and a chatbot?"
+### "Difference between an agent and a chatbot?"
 
 > "A chatbot responds to queries. An agent pursues goals. My trip agent didn't just say 'here's a recommendation.' It autonomously searched, built options, ranked them, and executed on approval (email + calendar). The connectors matter—Gmail, Google Calendar—those are how it moves from language to action. Without execution, it's just a very sophisticated chatbot."
 
-### "How do you handle failure or iterate?"
+### "How did I handle failure or iterate?"
 
 > "I noticed I initially wrote two chat messages thinking I needed both—system prompt plus user request. But Claude executed immediately after the first message. The second was redundant and wasted tokens. I learned to optimize based on observation. In production, I'd log every agent action (searches, emails, calendar updates) to see where it fails and iterate quickly."
 
-### "How do you balance automation with human control?"
+### "How did I balance automation with human control?"
 
 > "I built intentional approval gates. The agent autonomously plans and evaluates, but stops before committing money/calendar space to ask which option the user prefers. This is strategic autonomy—not 'no humans,' but 'humans at the right moments.' It prevents bad decisions while maintaining efficiency."
 
